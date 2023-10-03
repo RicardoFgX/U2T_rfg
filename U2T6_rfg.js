@@ -20,14 +20,14 @@ while(jugar){
     let acertado = false;
 
     while(!acertado){
-
+        console.log(numAl);
         let respuesta = prompt("¿Introduzca un número?")*1
-
         if(respuesta == null){
             jugar=false;
             acertado=true;
             alert("El juego se ha cancelado");
         } else {
+            respuesta = parseInt(respuesta);
             if(!isNaN(respuesta)){
                 if(respuesta === numAl){
                     jugar = false;
