@@ -1,46 +1,53 @@
-/** 
- * Haz una página web que implemente un juego de encontrar un número aleatorio bajo las premisas que se explican a continuación:
 
-La página calculará un número del 1 al 10. Utiliza para ello: 
-Math.floor(Math.random() * 10 + 1);
-Luego preguntará al usuario por el número mediante un prompt.
-Si el usuario escribe algo que no es un número se indica el error y se vuelve a pedir el número.
-Si el número escrito por el usuario es correcto, se indica que se acertó y finalizaremos el juego.
-Si no, le dice si el número es menor o mayor y vuelve a preguntar cuál es.
-Si se cancela cualquier cuadro, el juego termina indicando que se canceló el juego.
-Al final, si se ha finalizado correctamente el juego se indica el número de intentos.
-Se permite volver a jugar al usuario mediante un cuadro de confirmación.
-*/
-
+//Variable para controlar el juego y sus repeticiones al acabar uno
 let jugar = true;
+//Contador de intentos
+let intentos = 0;
+let numeroAleatorio = Math.floor(Math.random() * 10 + 1);
+//Variable para controlar en una misma partida si se ha acertado el número
+let acertado = false;
 
-while(jugar){
+//Escritura por consola para realizar las pruebas
+// console.log(numeroAleatorio);
 
-    const numAl = (Math.random() * 10 + 1);
-    let acertado = false;
+//Solo hay dos formas de dejar de jugar, cancelando en cualquier momento algún prompt o cuando acabes una partida si cancelas
+while (jugar) {
+    //Mientras no se acierte el número no se termina la partida
+    while (!acertado) {
+        let numero = prompt("Adivina el número del 1 al 10:");
+        //Si se cierra el cuadro prompt, se acaba el bucle
+        if (numero === null) {
+            alert("Juego cancelado.");
+            break;
+        }
 
-    while(!acertado){
-        console.log(numAl);
-        let respuesta = prompt("¿Introduzca un número?")*1
-        if(respuesta == null){
-            jugar=false;
-            acertado=true;
-            alert("El juego se ha cancelado");
+        numero = parseInt(numero);
+        //Si no es un número hay que pedirle que introduzca uno, este tipo de fallo no lo he contado como intento
+        if (isNaN(numero)) {
+            alert("Por favor, ingresa un número válido del 1 al 10.");
         } else {
-            respuesta = parseInt(respuesta);
-            if(!isNaN(respuesta)){
-                if(respuesta === numAl){
-                    jugar = false;
-                    acertado = true;
-                } else {
-                    if(respuesta > numAl){
-                        alert("El número es menor");
-                    } else{
-                        alert("El número es mayor");
-                    }
-                }
+            intentos++;
+
+            if (numero === numeroAleatorio) {
+                acertado = true;
+                alert("Correcto. Adivinaste el número en " + intentos + " intentos.");    
+            } else if (numero < numeroAleatorio) {
+                alert("El número es mayor");
+            } else {
+                alert("El número es menor");
             }
         }
     }
-    jugar = confirm("¿Quieres volver a jugar?");
+    //Condicional para volver a jugar, en caso afirmativo, se reinician los intentos, la variable "acertado" y se da otro valor a "numeroAleatorio"
+    if (confirm("¿Quieres jugar de nuevo?")) {
+        intentos = 0;
+        acertado = false;
+        numeroAleatorio = Math.floor(Math.random() * 10 + 1);
+    } else {
+        jugar=false;
+    }
 }
+
+//Nombre del propietario: Ricardo Fernández Guzmán
+
+
