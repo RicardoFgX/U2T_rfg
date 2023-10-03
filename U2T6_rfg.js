@@ -44,4 +44,3 @@ while(jugar){
     }
     jugar = confirm("¿Quieres volver a jugar?");
 }
-
