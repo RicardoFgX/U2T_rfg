@@ -8,7 +8,7 @@ let numeroAleatorio = Math.floor(Math.random() * 10 + 1);
 let acertado = false;
 
 //Escritura por consola para realizar las pruebas
-// console.log(numeroAleatorio);
+//console.log(numeroAleatorio);
 
 //Solo hay dos formas de dejar de jugar, cancelando en cualquier momento algún prompt o cuando acabes una partida si cancelas
 while (jugar) {
