@@ -14,50 +14,52 @@
         Por simplicidad, suponemos que el usuario escribe correctamente las mayúsculas y minúsculas.
 
  */
+let pizzaTerminada = false;
 
-let ingVeg = ["pimiento", "tofu"];
-let ingNVeg = ["peperoni", "jamón", "salmón"];
-let listaIng = "\n";
-let validIng = false;
-let ingCorrecto;
+while (!pizzaTerminada) {
+    let respuesta = prompt("¿Quiere una pizza vegetariana?[SI/NO]");
 
+    if (respuesta === null) {
+        alert("Has cancelado la orden. La aplicación ha terminado.");
+        pizzaTerminada = true;
+        break;
 
-let respuesta = prompt("¿Quiere una pizza vegetariana?[SI/NO]");
+    } else if (respuesta === "SI") {
+        // Si es una pizza vegetariana, muestra los ingredientes disponibles a este tipo de pizza
+        let ingredientes = prompt("Elige un ingrediente para tu pizza vegetariana: pimiento o tofu");
 
-if (respuesta === "si") {
-    for (let i = 0; i < ingVeg.length; i++) {
-        listaIng = listaIng + "->" + ingVeg[i] + "\n";
-    }
-    console.log(listaIng);
-
-    while (!validIng) {
-        let ingrediente = prompt("Que ingrediente quiere añadir:" + listaIng);
-        ingCorrecto = ingVeg.indexOf(ingrediente)
-        if (ingCorrecto !== -1) {
-            validIng = true;
-            alert("La pizza elegida es vegetariana y sus ingredientes son mozzarella, tomate y " + ingrediente);
+        if (ingredientes === null) {
+            alert("Has cancelado la orden. La aplicación ha terminado.");
+            pizzaTerminada=true;
+        } else if (ingredientes === "pimiento" || ingredientes === "tofu") {
+            // Si el ingrediente es válido, muestra la información de la pizza
+            alert("Has elegido una pizza vegetariana con mozzarella, tomate y " + ingredientes);
+            pizzaTerminada=true;
         } else {
-            alert("El ingrediente no es válido");
+            // Si el ingrediente no es válido, pide al usuario que lo introduzca de nuevo
+            alert("Ingrediente no válido.");
         }
-    }
+    } else if (respuesta === "NO") {
+        // Si es una pizza no vegetariana, muestra los ingredientes disponibles
+        let ingredientes = prompt("Elige un ingrediente para tu pizza no vegetariana: pepperoni, jamón o salmón");
 
-} else {
-    if (respuesta === "no") {
-        for (let i = 0; i < ingNVeg.length; i++) {
-            listaIng = listaIng + "->" + ingNVeg[i] + "\n";
+        if (ingredientes === null) {
+            alert("Has cancelado la orden. La aplicación ha terminado.");
+            pizzaTerminada=true;
+        } else if (ingredientes === "pepperoni" || ingredientes === "jamón") {
+            // Si el ingrediente es válido, muestra la información de la pizza
+            alert("Has elegido una pizza no vegetariana con mozzarella, tomate y " + ingredientes);
+            pizzaTerminada=true;
+        } else {
+            // Si el ingrediente no es válido, pide al usuario que lo introduzca de nuevo
+            alert("Ingrediente no válido. Por favor, elige Pepperoni, Jamón o Salmón.");
         }
-        console.log(listaIng);
-
-        while (!validIng) {
-            let ingrediente = prompt("Que ingrediente quiere añadir:" + listaIng);
-            ingCorrecto = ingNVeg.indexOf(ingrediente)
-            if (ingCorrecto !== -1) {
-                validIng = true;
-                alert("La pizza elegida no es vegetariana y sus ingredientes son mozzarella, tomate y " + ingrediente);
-            } else {
-                alert("El ingrediente no es válido");
-            }
-        }
+    } else {
+        // Si la respuesta no es válida, pide al usuario que lo introduzca de nuevo
+        alert("Respuesta no válida.");
     }
 }
+
+
+
 
