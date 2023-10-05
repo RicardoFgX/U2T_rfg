@@ -18,6 +18,7 @@ let validPass = false;
 let contrasena = "";
 let usuario;
 
+//Hasta que no se introduzca un usuario válido no deja pasar a introducir la contraseña
 while (!validUser) {
     usuario = prompt("Introduzca el nombre:");
     if (usuario === null) {
@@ -32,6 +33,7 @@ while (!validUser) {
     }
 }
 
+//Hasta que no se introduzca una contraseña válida no deja pasar a la contraseña
 while (!validPass && validUser) {
     contrasena = prompt("Introduzca la contraseña");
     if (usuario === null) {

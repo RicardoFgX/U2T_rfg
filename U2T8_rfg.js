@@ -14,20 +14,22 @@
         Por simplicidad, suponemos que el usuario escribe correctamente las mayúsculas y minúsculas.
 
  */
+
+//Variable para terminar la aplicación al acabar la pizza
 let pizzaTerminada = false;
 
+//Bucle que acaba cuando se termine la creación de la pizza, ya se con exito o cancelando la operación
 while (!pizzaTerminada) {
     let respuesta = prompt("¿Quiere una pizza vegetariana?[SI/NO]");
-
+    //Si cancela el prompt se cancela la orden y se sale de la aplicación
     if (respuesta === null) {
         alert("Has cancelado la orden. La aplicación ha terminado.");
         pizzaTerminada = true;
-        break;
 
     } else if (respuesta === "SI") {
         // Si es una pizza vegetariana, muestra los ingredientes disponibles a este tipo de pizza
         let ingredientes = prompt("Elige un ingrediente para tu pizza vegetariana: pimiento o tofu");
-
+        //Si cancela el prompt se cancela la orden y se sale de la aplicación
         if (ingredientes === null) {
             alert("Has cancelado la orden. La aplicación ha terminado.");
             pizzaTerminada=true;
@@ -42,7 +44,7 @@ while (!pizzaTerminada) {
     } else if (respuesta === "NO") {
         // Si es una pizza no vegetariana, muestra los ingredientes disponibles
         let ingredientes = prompt("Elige un ingrediente para tu pizza no vegetariana: pepperoni, jamón o salmón");
-
+        //Si cancela el prompt se cancela la orden y se sale de la aplicación
         if (ingredientes === null) {
             alert("Has cancelado la orden. La aplicación ha terminado.");
             pizzaTerminada=true;
